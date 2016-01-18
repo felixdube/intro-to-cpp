@@ -1,0 +1,22 @@
+-Testing number of elements...-
+-------------------------------
+14
+------------------------------
+-Testing length of content...-
+------------------------------
+Length of content should be 129. My code gives 129.
+-------------------------
+-Testing linear print...-
+-------------------------
+It should be: 
+Led Zeppelin The Beatles Pink Floyd Queen Metallica ACDC Rolling Stones Guns N' Roses Nirvana The Who Linkin Park Green Day Black Sabbath RHCP 
+Code gives: 
+Led Zeppelin The Beatles Pink Floyd Queen Metallica ACDC Rolling Stones Guns N' Roses Nirvana The Who Linkin Park Green Day Black Sabbath RHCP 
+------------------------------
+-Testing length of content...-
+------------------------------
+
+                                                               Led Zeppelin                                                      
+                         The Beatles                                                                 Pink Floyd                  
+             Queen                         Metallica                                ACDC                           Rolling Stones
+Guns N' Roses     Nirvana           The Who         Linkin Park            Green Day    Black Sabbath          RHCP              
