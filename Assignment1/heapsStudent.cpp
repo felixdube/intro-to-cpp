@@ -1,11 +1,11 @@
 #include "heaps.h"
-
+#include <iostream>
 
 Heap *heapFromArray(string *input, int length) {
 
 	Heap *heaps[length];
 
-    Heap h;
+   	static Heap h;
     heaps[0] = &h;
 
     for(int i = 0; i < length; i++){
@@ -14,52 +14,52 @@ Heap *heapFromArray(string *input, int length) {
 
     	if(2*i+2 == length){
 	     	// create one child
-	     	Heap hl;
+	     	auto hl = new Heap;
 
 	     	// save the address of the child in the array
-	     	heaps[2*i+1] = &hl;
+	     	heaps[2*i+1] = hl;
 
 	     	//link child to parent
-	     	heaps[i]->left = &hl;
+	     	heaps[i]->left = hl;
 	     	heaps[i]->right = nullptr;
     	}
     	else if(2*i+2 > length){
-    		// this node does not have child
+    		// this node does not have children
 	    	heaps[i]->left = nullptr;
 	    	heaps[i]->right = nullptr;
 	    }
 	    else{
-	     	// create two child
-	     	Heap hl;
-	     	Heap hr;
+	     	// create two children
+	     	auto hl = new Heap;
+	     	auto hr = new Heap;
 
 	     	// save the address of the child in the array
-	     	heaps[2*i+1] = &hl;
-	     	heaps[2*i+2] = &hr;
+	     	heaps[2*i+1] = hl;
+	     	heaps[2*i+2] = hr;
 
 	     	//link child to parent
-	     	heaps[i]->left = &hl;
-	     	heaps[i]->right = &hr;
-
+	     	heaps[i]->left = hl;
+	     	heaps[i]->right = hr;
 	     }
 	 }
-
+	
 	return heaps[0];
     
 }
+
 
 int numElements(Heap h) {
 	int num = 1;
 
 	// divide and conquer
 	if(h.right != nullptr){
-		num = num + numElements(*h.left) + numElements(*h.right);
-	}
+		num =  1 + numElements(*h.left) + numElements(*h.right);
+	 }
 	else if(h.left != nullptr){
-		num = num + numElements(*h.left);
+		num =  1 + numElements(*h.left);
 	}
 
-	return num;
+	 return num;
 }
 
 
