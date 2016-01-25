@@ -42,6 +42,10 @@ Heap *heapFromArray(string *input, int length) {
 	     	heaps[i]->right = hr;
 	     }
 	 }
+	 for(int i = 0; i< length; i++){
+	 	cout << heaps[i]->name << endl;
+
+	 }
 	
 	return heaps[0];
     
@@ -51,7 +55,7 @@ Heap *heapFromArray(string *input, int length) {
 int numElements(Heap h) {
 	int num = 1;
 
-	// divide and conquer
+	// add the number of children if any, by recursion
 	if(h.right != nullptr){
 		num =  1 + numElements(*h.left) + numElements(*h.right);
 	 }
@@ -64,7 +68,17 @@ int numElements(Heap h) {
 
 
 size_t lengthOfContent(Heap h) {
-    //your code here
+    int len = h.name.length();
+
+	// add the length of children if any, by recursion
+	if(h.right != nullptr){
+		len = len + lengthOfContent(*h.left) + lengthOfContent(*h.right);
+	 }
+	else if(h.left != nullptr){
+		len =  len + lengthOfContent(*h.left);
+	}
+
+	 return len;
 }
 
 
@@ -74,7 +88,9 @@ Heap **returnAllHeaps(Heap h) {
 }*/
 
 string *printLinear(Heap h) {
-    //your code here
+    string heaps[numElements(h)];
+
+
 }
 
 

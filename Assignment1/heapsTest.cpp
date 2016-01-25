@@ -16,11 +16,11 @@ int main() {
     cout << "-------------------------------" << endl;
     cout << numElements(*heapOfBands) << endl;
 
-    // // test lenght of content
-    // cout << "------------------------------" << endl;
-    // cout << "-Testing length of content...-" << endl;
-    // cout << "------------------------------" << endl;
-    // cout << "Length of content should be 129" << ". My code gives " << lengthOfContent(*heapOfBands) << "." << endl;
+    // test lenght of content
+    cout << "------------------------------" << endl;
+    cout << "-Testing length of content...-" << endl;
+    cout << "------------------------------" << endl;
+    cout << "Length of content should be 129" << ". My code gives " << lengthOfContent(*heapOfBands) << "." << endl;
 
     // // test linear print
     // cout << "-------------------------" << endl;
