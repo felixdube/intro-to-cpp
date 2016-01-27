@@ -3,6 +3,7 @@
 #define heaps_h
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -52,5 +53,7 @@ string *printLinear(Heap h);
 
 string printPretty(Heap h);
 
+
+void inorder(Heap *root, std::vector<Heap>& listToAdd);
 
 #endif /* heaps_h */

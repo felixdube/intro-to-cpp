@@ -22,27 +22,27 @@ int main() {
     cout << "------------------------------" << endl;
     cout << "Length of content should be 129" << ". My code gives " << lengthOfContent(*heapOfBands) << "." << endl;
 
-    // // test linear print
-    // cout << "-------------------------" << endl;
-    // cout << "-Testing linear print...-" << endl;
-    // cout << "-------------------------" << endl;
-    // cout << "It should be: " << endl;
-    // for (int i=0; i< numBands; i++) {
-    //     cout << maBands[i] << " ";
-    // }cout << endl;
+    // test linear print
+    cout << "-------------------------" << endl;
+    cout << "-Testing linear print...-" << endl;
+    cout << "-------------------------" << endl;
+    cout << "It should be: " << endl;
+    for (int i=0; i< numBands; i++) {
+        cout << maBands[i] << " ";
+    }cout << endl;
     
-    // cout << "Code gives: " << endl;
-    // string *pl = printLinear(*heapOfBands);
-    // for (int i=0; i<14; i++) {
-    //     cout << pl[i] << " ";
-    // }cout << endl;
+    cout << "Code gives: " << endl;
+    string *pl = printLinear(*heapOfBands);
+    for (int i=0; i<14; i++) {
+        cout << pl[i] << " ";
+    }cout << endl;
     
     
-    // // test pretty print
-    // cout << "------------------------------" << endl;
-    // cout << "-Testing length of content...-" << endl;
-    // cout << "------------------------------" << endl;
-    // cout << endl << printPretty(*heapOfBands) << endl;
+    // test pretty print
+    cout << "------------------------------" << endl;
+    cout << "-Testing length of content...-" << endl;
+    cout << "------------------------------" << endl;
+    cout << endl << printPretty(*heapOfBands) << endl;
 }
 
 
