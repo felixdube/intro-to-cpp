@@ -1,1 +1,2 @@
-COMP322 - Intro to C++
+#COMP322 
+Intro to C++
