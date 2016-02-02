@@ -4,6 +4,18 @@
 #include <math.h>
 
 
+// place all the nodes of a heap in a vector using inorder traversal
+void inorder(Heap *root, std::vector<Heap>& listToAdd)
+{
+    if(root != NULL)
+    {
+       inorder(root->left, listToAdd);
+       listToAdd.push_back(*root);
+       inorder(root->right, listToAdd);
+    }
+}
+
+// create heap
 Heap *heapFromArray(string *input, int length) {
 
 	Heap *nodes = new Heap[length];
@@ -64,7 +76,6 @@ size_t lengthOfContent(Heap h) {
 }
 
 
-// TODO: make it the proper way
 Heap **returnAllHeaps(Heap h) {
 	int length = numElements(h);
 	static Heap *nodes = new Heap[length];
@@ -88,6 +99,7 @@ Heap **returnAllHeaps(Heap h) {
 	 return &nodes;
 }
 
+
 string *printLinear(Heap h) {
     int length = numElements(h);
     string *heapsString = new string[length];
@@ -96,6 +108,7 @@ string *printLinear(Heap h) {
 	for(int i = 0; i< length; i++){
 		heapsString[i] = nodes[i].name;
 	}
+
 	return heapsString;
 }
 
@@ -118,9 +131,8 @@ string printPretty(Heap h) {
     std::vector<Heap> heapInorder;
     inorder(&h, heapInorder);
 
-    char pretty[lengthOfContent(h)*numLines+numLines];
-
     // initialize the char[] with blank spaces
+    char pretty[lengthOfContent(h)*numLines+numLines];
 	for (int i = 0; i< lengthOfContent(h)*numLines+numLines; i++){
     	pretty[i] = ' ';
 	} 
@@ -167,14 +179,4 @@ string printPretty(Heap h) {
     string str(pretty);
     return str;
 
-}
-
-void inorder(Heap *root, std::vector<Heap>& listToAdd)
-{
-    if(root != NULL)
-    {
-       inorder(root->left, listToAdd);
-       listToAdd.push_back(*root);
-       inorder(root->right, listToAdd);
-    }
 }
