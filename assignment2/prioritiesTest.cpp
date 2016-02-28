@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <string>
 
 #include "priorities.h"
 
@@ -31,8 +32,8 @@ int main() {
     for(auto &s : maBands) {
         cout << s << " has priority " <<  bandsHeap[s] << endl;
     }
-    // --------------------
-    // test Q5
+    // // --------------------
+    // // test Q5
     cout << "-------------------------------" << endl;
     cout << "- Testing heapify up    ...   -" << endl;
     cout << "-------------------------------" << endl;
@@ -89,8 +90,8 @@ int main() {
     for(auto &s : h2.printLinear()) {
         cout << s << " " << flush;
     }cout << endl;
-    // --------------------
-    // test Q6
+    // // --------------------
+    // // test Q6
     cout << "-------------------------------" << endl;
     cout << "- Testing heapify down...     -" << endl;
     cout << "-------------------------------" << endl;
@@ -109,11 +110,11 @@ int main() {
     cout << "- Testing input stream constructor...     -" << endl;
     cout << "-------------------------------------------" << endl;
     string woolf("What a lark! What a plunge! For so it always seemed to me when, with a little squeak of the hinges, which I can hear now, I burst open the French windows and plunged at Bourton into the open air. How fresh, how calm, stiller than this of course, the air was in the early morning; like the flap of a wave; the kiss of a wave; chill and sharp and yet (for a girl of eighteen as I then was) solemn, feeling as I did, standing there at the open window, that something awful was about to happen...");
-    istringstream virginia(woolf);
-    Heap adeline(virginia);
-    for(auto &s : adeline.printLinear()) {
-        cout << s << " " << flush;
-    }cout << endl;
+    // istringstream virginia(woolf);
+    // Heap adeline(virginia);
+    // for(auto &s : adeline.printLinear()) {
+    //     cout << s << " " << flush;
+    // }cout << endl;
     
     return 0;
 }
