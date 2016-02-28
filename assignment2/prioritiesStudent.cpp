@@ -254,26 +254,49 @@ void Heap::heapifyDown(unsigned long index) {
 
 
 string Heap::pop() {
-	    swap(content.at(0), content.at(content.size() - 1));
-		content.pop_back();
-		heapifyDown(0);
+
+	string data = content.at(0).data;
+
+	// place a the end the node we want to remove
+	swap(content.at(0), content.at(content.size() - 1));
+
+	// remove the last node
+	content.pop_back();
+
+	// heapifydown the node we placed at the top
+	heapifyDown(0);
+
+	return data;
 }
 
 
 // QUESTION 7
 
 Heap::Heap(istream &in) {
+
+	// map that count the number of times a words appears
 	map<string, int> countMap;
-	map<string, int> newWord;
+
+	// countain all the words of the stream
 	vector<string> words;
+
+	// next word in the stream
 	string nextWord;
+
+	// max count value
 	int max = 0;
+
+	// for all the word in the stream
 	while (!in.eof()){
 		in >> nextWord;
+
+		// if the word is not in the map add it to the map and the vector
 		if(countMap.find(nextWord) == countMap.end()){
 			countMap[nextWord] = 1;
 			words.push_back(nextWord);
 		}
+
+		// if the word is already in the map, increament its count
 		else{
 			countMap[nextWord] += 1;
 			if(countMap[nextWord] > max){
@@ -281,6 +304,9 @@ Heap::Heap(istream &in) {
 			}
 		}
 	}
+
+	// add to the heap all the word in the vector
+	// priority = max - count
 	for (int i = 0; i < countMap.size(); i++){
     	push(words.at(i), max - countMap[words.at(i)]);
 	}
