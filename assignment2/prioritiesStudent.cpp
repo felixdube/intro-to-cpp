@@ -19,12 +19,7 @@ Heap::Heap(const vector<string> & dataToAdd) {
 }
 
 Heap::Heap(const Heap& h) {
-    for(int i = 0; i < h.content.size(); i++){
-    	Node *nodeToAdd = new Node;
-    	nodeToAdd->data = h.content.at(i).data;
-    	nodeToAdd->priority = h.content.at(i).priority;
-    	content.push_back(*nodeToAdd);
-    }
+    content = h.content;
 }
 
 
