@@ -203,6 +203,7 @@ Heap& Heap::operator+=(const Heap& h) {
     for(int i = 0; i < h.content.size(); i++) {
     	push(h.content.at(i).data, h.content.at(i).priority);
     }
+    return *this;
 }
 
 
