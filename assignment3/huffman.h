@@ -122,16 +122,10 @@ public:
     // constructor builds a tree from a file containing a block of text. It builds a Huffman Heap
     // and pops from it until only one element is left
     HuffmanTree(istream &input) {
-        cout << "beforeheap" << endl;
-
         HuffmanHeap h(input);
-
-        cout << "afterheap" << endl;
 
         while(!h.hasOneElementLeft()) {
             h.pop();
-
-            cout << "pop" << endl;
         }
         root = h.lastElement();
         iter = root;

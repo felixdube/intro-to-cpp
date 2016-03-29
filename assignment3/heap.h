@@ -21,7 +21,7 @@ protected:
     // ----
     // Content -> pointers to nodes
     vector<Node *> content;
-    typedef typename vector<Node>::size_type heapIndex;
+    typedef typename vector<Node *>::size_type heapIndex;
     // default constructor
     // ---- map of existing Nodes
     unordered_map<T, Node> items;
@@ -39,7 +39,7 @@ public:
     // ----- top() ------
     // returns the element with best priority
     // EXEPT: throws 0 if the heap is empty
-    string top() const;
+    T top() const;
     // ---------
     // ----- empty() ------
     // returns true only if there are no elements in the heap
@@ -124,9 +124,10 @@ void Heap<T>::heapifyDown(Heap<T>::heapIndex index) {
 }
 
 template <class T>
-string Heap<T>::top() const {
+T Heap<T>::top() const {
     if(empty()) throw 0;
-    return (content.empty()) ? "" : *(content[0]->data); }
+    return *(content[0]->data); 
+}
 
 
 template <class T>

@@ -14,11 +14,6 @@ int main() {
     cout << "- Testing dfs...              -" << endl;
     cout << "-------------------------------" << endl;
     HuffmanTree htSimple(syrup);
-
-    
-    cout << "world" << endl;
-
-
     HuffmanCode hcDFS = htSimple.getCode();
     for(auto entry : hcDFS) {
         cout << entry.first << " " << entry.second << endl;
@@ -26,30 +21,30 @@ int main() {
     cout << "- The output should be the following, or the negative (0s replaced with ones)-" << endl;
     cout << "LedZeppelin 01\nNirvana 000\nQueen 001\nTheBeatles 1" << endl;
     
-//     // test the Huffman Code form input string
-//     cout << "-------------------------------" << endl;
-//     cout << "- Testing Huffman Code...     -" << endl;
-//     cout << "-------------------------------" << endl;
-//     string abcd = "a 0\nb 10\nc 110\nd 111\n";
-//     istringstream hcinputstream(abcd);
-//     HuffmanCode hcFromInput(hcinputstream);
-//     for(auto entry : hcFromInput) {
-//         cout << entry.first << " " << entry.second << endl;
-//     }
-//     cout << "- The output should be the following, " << endl << abcd;
+    // test the Huffman Code form input string
+    cout << "-------------------------------" << endl;
+    cout << "- Testing Huffman Code...     -" << endl;
+    cout << "-------------------------------" << endl;
+    string abcd = "a 0\nb 10\nc 110\nd 111\n";
+    istringstream hcinputstream(abcd);
+    HuffmanCode hcFromInput(hcinputstream);
+    for(auto entry : hcFromInput) {
+        cout << entry.first << " " << entry.second << endl;
+    }
+    cout << "- The output should be the following, " << endl << abcd;
     
-//     // test the encode method
-//     cout << "-------------------------------" << endl;
-//     cout << "- Testing encoding...         -" << endl;
-//     cout << "-------------------------------" << endl;
-//     // test Huffman Encoder
-//     HuffmanEncoder he(hcFromInput);
-//     istringstream syrup2("a a b b a a c c d d");
-//     ostringstream squeeze;
-//     he.encode(syrup2, squeeze);
-//     cout << squeeze.str() << endl;
-//     cout << "- The output should be the following, " << endl;
-//     cout << "00101000110110111111" << endl;
+    // test the encode method
+    cout << "-------------------------------" << endl;
+    cout << "- Testing encoding...         -" << endl;
+    cout << "-------------------------------" << endl;
+    // test Huffman Encoder
+    HuffmanEncoder he(hcFromInput);
+    istringstream syrup2("a a b b a a c c d d");
+    ostringstream squeeze;
+    he.encode(syrup2, squeeze);
+    cout << squeeze.str() << endl;
+    cout << "- The output should be the following, " << endl;
+    cout << "00101000110110111111" << endl;
     
     
 //     // test the Huffman Tree from Huffman Code
@@ -62,24 +57,24 @@ int main() {
 //     }
     
     
-//     // test Huffman Decoder
-//     cout << "-------------------------------" << endl;
-//     cout << "- Testing decoder...          -" << endl;
-//     cout << "-------------------------------" << endl;
-//     HuffmanDecoder hd(hcFromInput);
-//     istringstream syrup3("00101000110110111111");
-//     hd.push(syrup3);
-//     try {
-//         while (true) {
-//             cout << hd.next() << " ";
-//         }
-//     }catch(int) {
-//         // DONE poping;
-//         cout << endl;
-//     }
-//     cout << "- The output should be the following, " << endl;
-//     cout << "a a b b a a c c d d" << endl;
-//     cout << endl;
+    // test Huffman Decoder
+    cout << "-------------------------------" << endl;
+    cout << "- Testing decoder...          -" << endl;
+    cout << "-------------------------------" << endl;
+    HuffmanDecoder hd(hcFromInput);
+    istringstream syrup3("00101000110110111111");
+    hd.push(syrup3);
+    try {
+        while (true) {
+            cout << hd.next() << " ";
+        }
+    }catch(int) {
+        // DONE poping;
+        cout << endl;
+    }
+    cout << "- The output should be the following, " << endl;
+    cout << "a a b b a a c c d d" << endl;
+    cout << endl;
     
     
 //     cout << "-------------------------------" << endl;
