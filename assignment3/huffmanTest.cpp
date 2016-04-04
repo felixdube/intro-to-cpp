@@ -47,14 +47,14 @@ int main() {
     cout << "00101000110110111111" << endl;
     
     
-//     // test the Huffman Tree from Huffman Code
-//     cout << "-------------------------------" << endl;
-//     cout << "- Testing Trees from Codes... -" << endl;
-//     cout << "-------------------------------" << endl;
-//     HuffmanTree ht2(hcFromInput);
-//     for(auto entry : ht2.getCode()) {
-//         cout << entry.first << " " << entry.second << endl;
-//     }
+    // test the Huffman Tree from Huffman Code
+    cout << "-------------------------------" << endl;
+    cout << "- Testing Trees from Codes... -" << endl;
+    cout << "-------------------------------" << endl;
+    HuffmanTree ht2(hcFromInput);
+    for(auto entry : ht2.getCode()) {
+        cout << entry.first << " " << entry.second << endl;
+    }
     
     
     // test Huffman Decoder
@@ -77,40 +77,40 @@ int main() {
     cout << endl;
     
     
-//     cout << "-------------------------------" << endl;
-//     cout << "- Testing woolf...            -" << endl;
-//     cout << "-------------------------------" << endl;
+    cout << "-------------------------------" << endl;
+    cout << "- Testing woolf...            -" << endl;
+    cout << "-------------------------------" << endl;
     
     
-//     string woolf("What a lark! What a plunge! For so it always seemed to me when, with a little squeak of the hinges, which I can hear now, I burst open the French windows and plunged at Bourton into the open air. How fresh, how calm, stiller than this of course, the air was in the early morning; like the flap of a wave; the kiss of a wave; chill and sharp and yet (for a girl of eighteen as I then was) solemn, feeling as I did, standing there at the open window, that something awful was about to happen...");
-//     // simulate a file containing this text
-//     istringstream virginia(woolf);
+    string woolf("What a lark! What a plunge! For so it always seemed to me when, with a little squeak of the hinges, which I can hear now, I burst open the French windows and plunged at Bourton into the open air. How fresh, how calm, stiller than this of course, the air was in the early morning; like the flap of a wave; the kiss of a wave; chill and sharp and yet (for a girl of eighteen as I then was) solemn, feeling as I did, standing there at the open window, that something awful was about to happen...");
+    // simulate a file containing this text
+    istringstream virginia(woolf);
     
-//     // create a decoder based on this text
-//     HuffmanDecoder hdv(virginia);
+    // create a decoder based on this text
+    HuffmanDecoder hdv(virginia);
     
-//     // get code
-//     HuffmanCode hcv = hdv.getCode();
+    // get code
+    HuffmanCode hcv = hdv.getCode();
     
-//     // create an encoder based on the code corresponding to the text
-//     HuffmanEncoder hev(hcv);
+    // create an encoder based on the code corresponding to the text
+    HuffmanEncoder hev(hcv);
     
-//     // encode text
-//     istringstream syrupv(woolf);
-//     ostringstream squeezev;
-//     hev.encode(syrupv, squeezev);
-//     istringstream syrupvw(squeezev.str());
-//     hdv.push(syrupvw);
+    // encode text
+    istringstream syrupv(woolf);
+    ostringstream squeezev;
+    hev.encode(syrupv, squeezev);
+    istringstream syrupvw(squeezev.str());
+    hdv.push(syrupvw);
     
-//     // decode text
-//     try{
-//         while (true)
-//             cout << hdv.next() << " ";
-//     }catch(int) {
-//         // DONE poping;
-//         cout << endl;
-//     }
-//     return 0;
+    // decode text
+    try{
+        while (true)
+            cout << hdv.next() << " ";
+    }catch(int) {
+        // DONE poping;
+        cout << endl;
+    }
+    return 0;
 }
 
 

@@ -191,9 +191,89 @@ HuffmanCode::HuffmanCode(istream &input) {
 
 
 //QUESTION 5
+bool isPrefixOfAnother(string code, string allCode[]){
+    bool toRet = false;
+    for(int i = 0; i < sizeof(allCode) / sizeof(string); i++){
+        if(allCode[i].length() > code.length()){
+            if(code.compare(allCode[i].substr(0, code.length() - 1)) == 0){
+                toRet = true;
+            }
+        }
+    }
+    return toRet;
+}
 
 HuffmanTree::HuffmanTree(const HuffmanCode &hc) {
     
+    // get all the code
+    string allCode[hc.size()];
+    string allWord[hc.size()];
+    int k = 0;
+    for (map<string, string>::const_iterator it = hc.begin(); it != hc.end(); it++){
+
+        // check if the code is made of 0 and 1
+        if(!isZeroOne(it->second)){
+            throw 2;
+        } else {
+            allCode[k] = it->second;
+            allWord[k] = it->first;
+            k++;
+        }
+    }
+
+    // check if any of the code is the prefix of another
+    for(int i = 0; i < sizeof(allCode) / sizeof(string); i++){
+        if(isPrefixOfAnother(allCode[i], allCode)){
+            throw 1;
+        }
+    }
+
+    // create root
+    root = new TreeNode();
+    iter = root;
+
+
+    for (int j = 0; j < sizeof(allCode) / sizeof(string); j++) {
+        // create path to the leaf
+        int i;
+        for(i = 0; i < allCode[j].length() - 1; i++){
+            if(allCode[j].at(i) == '0'){
+                if(iter->children[0] == nullptr){
+                    iter->children[0] = new TreeNode();
+                    iter = iter->children[0];
+                } else {
+                    iter = iter->children[0];
+                }
+
+            } else {
+                 if(iter->children[1] == nullptr){
+                    iter->children[1] = new TreeNode();
+                    iter = iter->children[1];
+                } else {
+                    iter = iter->children[1];
+                }
+            }
+        }
+
+        if(allCode[j].at(i) == '0'){
+            if(iter->children[0] == nullptr){
+                iter->children[0] = new TreeNode(allWord[j]);
+                iter = iter->children[0];
+            } else {
+                iter = iter->children[0];
+            }
+
+        } else {
+             if(iter->children[1] == nullptr){
+                iter->children[1] = new TreeNode(allWord[j]);
+                iter = iter->children[1];
+            } else {
+                iter = iter->children[1];
+            }
+        }
+
+        resetIterator();
+    }
 }
 
 // QUESTION 4
@@ -221,13 +301,12 @@ void HuffmanEncoder::encode(istream &fin, ostream &fout) const {
 
 void HuffmanDecoder::push(istream &f) {
     
-    char *line = new char[256];
-    f.getline(line, 256);
+    char *line = new char[1024];
+    f.getline(line, 1024);
 
-    bool toPush;
     const string* word;
 
-    for(int i = 0; i < sizeof(line); i++) {
+    for(int i = 0; i < strlen(line); i++) {
         
         // check if the input is valid
         if(line[i] != '0' && line[i] != '1') {
@@ -236,30 +315,27 @@ void HuffmanDecoder::push(istream &f) {
 
         try {
             word = getWordFromIter();
-            toPush = true;
+            savedWords.push(word);
+            resetIterator();
+            i--;
         } catch(const double e) {
-            // if there is an error, the node is not a leaf
-            toPush = false;
 
-            // check if the last word is unfinished
-            if(i == sizeof(line) -1) {
-                throw 1;
-            }
-
-            // else go down to the apropriate children
-            else if(line[i] == '0'){
+            // go down to the apropriate children
+            if(line[i] == '0'){
                 moveDownOnZero();
             }
             else if(line[i] == '1'){
                 moveDownOnOne();
             }
         }
-
-        if(toPush){
-            savedWords.push(word);
-            resetIterator();
-        }
     }
+
+    try {
+        word = getWordFromIter();
+        savedWords.push(word);
+    } catch(const double e) {
+       throw 1;
+   }
 
 }
 
