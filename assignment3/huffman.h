@@ -63,7 +63,7 @@ private:
         // --------- TreeNode(string) --------
         // copy constructor
         TreeNode(const TreeNode &t) {
-            if( t.children[1] != nullptr) children[0] = new TreeNode(*t.children[0]);
+            if( t.children[0] != nullptr) children[0] = new TreeNode(*t.children[0]);
             if( t.children[1] != nullptr) children[1] = new TreeNode(*t.children[1]);
             if( t.word != nullptr) word = new string(*t.word);
         }
